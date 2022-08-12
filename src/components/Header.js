@@ -7,7 +7,7 @@ function Header({ goTo, pageTitle }) {
 
     return (
         <header>
-            <h1>{pageTitle}</h1>
+            <h1 className="header-title">{pageTitle}</h1>
             <div>
                 {detailsHeader &&
                 <div className="details-header-links">
@@ -16,7 +16,10 @@ function Header({ goTo, pageTitle }) {
                 </div>
                 }
                 {!detailsHeader &&
-                    <Link to={goTo} className="header-link">
+                    <Link 
+                        to={goTo} 
+                        className="header-link"
+                    >
                         {
                         goTo === "/" 
                         ?

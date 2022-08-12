@@ -6,7 +6,7 @@ import Movie from "./Movie"
 function Category(props) {
     let { type } = useParams()
     const [movieList, setMovieList] = useState([])
-    const [hasMorepages, setHasMorepages] = useState(true)
+    const [hasMorePages, setHasMorePages] = useState(true)
     const [pages, setPages] = useState(1)
 
     const [unableToFind, setUnableToFind] = useState(false)
@@ -31,6 +31,7 @@ function Category(props) {
             return `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&page=${pages}&query=${props.query}`
         } 
         if(props.genre) {
+            console.log(props.genre)
             return `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&page=${pages}&with_genres=${props.genre}`
         }
         return ""
@@ -40,7 +41,7 @@ function Category(props) {
         if(pages === 1) {
             setUnableToFind(true)
         } else {
-            setHasMorepages(false)
+            setHasMorePages(false)
         }
     }    
 
@@ -53,7 +54,11 @@ function Category(props) {
             if(!res.ok) {
                 handelNotOk()
             } else {
+
             const data = await res.json()
+            if(!data.results.length) {
+                handelNotOk()
+            }
 
             setMovieList(prevMovies => 
                 pages === 1 ?
@@ -75,7 +80,7 @@ function Category(props) {
                 <InfiniteScroll
                     dataLength={movieList.length}
                     next={() => setPages(prevPage => prevPage + 1)}
-                    hasMore={hasMorepages}
+                    hasMore={hasMorePages}
                     loader={<h4>Loading...</h4>}
                 >
                     {movieList.map(
@@ -90,7 +95,7 @@ function Category(props) {
             }
             </>
         )
-    }, [type, props])
+    }, [movieList, hasMorePages, unableToFind])
 }
 
 export default Category

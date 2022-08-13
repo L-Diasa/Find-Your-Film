@@ -217,7 +217,8 @@ header img {
 }
 
 .header-link {
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
   color: unset;
 } 
 
@@ -251,7 +252,8 @@ header img {
 .search-input,
 .header-link,
 .finder-link,
-.watchlist-sorter {
+.watchlist-sorter,
+.toggler p  {
   font-size: 14px;
 }
 
@@ -270,6 +272,49 @@ header img {
 
 .finder-link, 
 .movie-title,
-.watchlist-sorter {
+.watchlist-sorter,
+.toggler p  {
   font-weight: 500;
+}
+
+/* toggler */
+
+.toggler {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.toggler--slider {
+  width: 25px;
+  height: 13px;
+  background-color: #2B283A;
+  border-radius: 2rem;
+  margin-inline: 7px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  box-sizing: content-box;
+}
+
+/* .toggler.dark .toggler--slider {
+  border-color: white;
+  background-color: #F5F5F5;
+} */
+
+.toggler--slider--circle {
+  height: 13px;
+  width: 13px;
+  background-color: white;
+  border-radius: 50%;
+}
+/* 
+.toggler.dark .toggler--slider--circle {
+  background-color: black;
+} */
+
+.toggler.dark .toggler--slider {
+  justify-content: flex-end;
 }

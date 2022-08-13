@@ -1,42 +1,44 @@
-import React, { memo } from "react"
+import React, { useMemo, useContext } from "react"
 import { Link } from "react-router-dom"
-import PropTypes from "prop-types"
+import { Context } from "../Context"
 
-function Header({ goTo, pageTitle }) {
-    const detailsHeader = goTo === "fromDetails"
+function Header({ pageTitle, link }) {
+    const { darkMode, toggleDarkMode } = useContext(Context)
 
-    return (
-        <header>
-            <h1 className="header-title">{pageTitle}</h1>
-            <div>
-                {detailsHeader &&
-                <div className="details-header-links">
-                    <Link to="/Finder" className="header-link">Search for movies</Link>
-                    <Link to="/" className="header-link">My Watchlist</Link>
-                </div>
-                }
-                {!detailsHeader &&
-                    <Link 
-                        to={goTo} 
-                        className="header-link"
+    return useMemo(() => {
+        return (
+            <header>
+                <h1 className="header-title">{pageTitle}</h1>
+                <div>
+                    <div 
+                        className={`toggler ${darkMode ? "dark" : ""}`}
                     >
-                        {
-                        goTo === "/" 
-                        ?
-                        "My Watchlist"
-                        : 
-                        "Search for movies"
-                        }
-                    </Link>
-                }
-            </div>
-        </header>
+                        <p>Light</p>
+                        <div 
+                            className="toggler--slider"
+                            onClick={toggleDarkMode}
+                        >
+                            <div className="toggler--slider--circle"></div>
+                        </div>
+                        <p>Dark</p>
+                    </div>
+                    {link}
+                </div>
+            </header>
+        )
+    }, [darkMode])
+}
+
+function HeaderLinkSearch() {
+    return (
+        <Link to="/Finder" className="header-link">Search for Movies</Link>
     )
 }
 
-export default memo(Header)
-
-Header.propTypes = {
-    goTo: PropTypes.string,
-    pageTitle: PropTypes.string
+function HeaderLinkWatchlist(props) {
+    return (
+        <Link to="/" className="header-link" onClick={props.handleClick}>My Watchlist</Link>
+    )
 }
+
+export { Header, HeaderLinkWatchlist, HeaderLinkSearch }

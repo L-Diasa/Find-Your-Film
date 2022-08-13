@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect }from "react"
 
-import Header from '../components/Header'
+import {Header, HeaderLinkSearch } from '../components/Header'
 import Movie from '../components/Movie'
 import { Context } from "../Context"
 
@@ -36,7 +36,7 @@ export default function Watchlist() {
 
     return (
         <>
-            <Header goTo="/Finder" pageTitle="My Watchlist" />
+            <Header pageTitle="My Watchlist" link={<HeaderLinkSearch />} />
             <main>
                 <div className="watchlist-sorter selected-finder-link" onClick={toggleDate}>
                     Date Added<img src={currSortOrder === "asc" ? ascendingIcon : descendingIcon} alt="" />

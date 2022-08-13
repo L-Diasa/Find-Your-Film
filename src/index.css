@@ -106,7 +106,6 @@ main {
 
 .movie-watchlist {
   grid-area: watchlist;
-  cursor: pointer;
 }
 
 .movie-more {
@@ -123,7 +122,8 @@ main {
 .movie-more,
 .movie-star,
 .movie-details,
-.watchlist-sorter {
+.watchlist-sorter,
+.smthsUp .lets-add {
   display: flex;
   align-items: center;
   column-gap: 5px;
@@ -201,7 +201,6 @@ header img {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   color: #374151;
-  cursor: pointer;
   display: flex;
   align-items: center;
 }
@@ -230,9 +229,17 @@ header img {
 
 .movie-more,
 .header-link,
-.finder-link {
+.finder-link,
+.smthsUp .lets-add {
   text-decoration: none;
 }
+
+/* .movie-more:hover,
+.header-link:hover,
+.smthsUp .lets-add:hover,
+.movie-watchlist-content:hover {
+  text-decoration: underline;
+} */
 
 /* fonts */
 
@@ -253,7 +260,8 @@ header img {
 .header-link,
 .finder-link,
 .watchlist-sorter,
-.toggler p  {
+.toggler p,
+.smthsUp .lets-add {
   font-size: 14px;
 }
 
@@ -277,6 +285,12 @@ header img {
   font-weight: 500;
 }
 
+/* color */
+
+.smthsUp .lets-add {
+  color: #363636;
+}
+
 /* toggler */
 
 .toggler {
@@ -288,15 +302,15 @@ header img {
 .toggler--slider {
   width: 25px;
   height: 13px;
-  background-color: #2B283A;
+  /* background-color: #2B283A; */
   border-radius: 2rem;
   margin-inline: 7px;
-  cursor: pointer;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid white;
   box-sizing: content-box;
+  background-color: #F5F5F5;
 }
 
 /* .toggler.dark .toggler--slider {
@@ -307,7 +321,8 @@ header img {
 .toggler--slider--circle {
   height: 13px;
   width: 13px;
-  background-color: white;
+  /* background-color: white; */
+  background-color: black;
   border-radius: 50%;
 }
 /* 
@@ -317,4 +332,14 @@ header img {
 
 .toggler.dark .toggler--slider {
   justify-content: flex-end;
+}
+
+/* pointers */
+
+.movie-watchlist,
+.finder-link,
+.watchlist-sorter,
+.toggler--slider,
+.smthsUp .lets-add {
+  cursor: pointer;
 }

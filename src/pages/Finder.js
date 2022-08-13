@@ -1,12 +1,13 @@
 import React, { useState, useContext, useRef, useMemo, useEffect } from "react"
 import { Routes, Route, Link, useNavigate } from "react-router-dom"
 
-import Header from '../components/Header'
+import { Header, HeaderLinkWatchlist } from '../components/Header'
 import Genre from '../components/Genre'
 import Category from '../components/Category'
+import { Context } from "../Context"
+
 import noDataIcon from "../images/noDataIcon.svg"
 import searchIcon from "../images/searchIcon.svg"
-import { Context } from "../Context"
 
 function Finder() {
     const [currSelection, setCurrSelection] = useState("")
@@ -20,12 +21,15 @@ function Finder() {
 
     useEffect(() => {
         if(currSelection !== "search" && query.length) {
-            console.log("here")
             navigate("/Finder/search")
             clearGenreSelection()
             setCurrSelection("search")
         }
     }, [query])
+
+    useEffect(() => {
+        clearGenreSelection()
+    }, [])
 
     const genreLinks = genres.map( genre => 
         <Genre 
@@ -59,12 +63,13 @@ function Finder() {
     function getLinkClass(selected) {
         return selected ? "selected-finder-link" : ""
     }
+
     return useMemo(() => {
         return (
             <>
                 <Header 
-                    goTo="/" 
-                    pageTitle="Find your film" 
+                    pageTitle="My Watchlist" 
+                    link={<HeaderLinkWatchlist />} 
                 />
                 <main>
                     <form onSubmit={(e) => handleSearch(e)}>

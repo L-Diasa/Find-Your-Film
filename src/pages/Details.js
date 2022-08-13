@@ -1,7 +1,7 @@
 import React from "react"
 import { useLocation } from 'react-router-dom'
 
-import Header from '../components/Header'
+import { Header, HeaderLinkSearch, HeaderLinkWatchlist } from '../components/Header'
 
 export default function Details() {
     const location = useLocation()
@@ -10,11 +10,17 @@ export default function Details() {
     return (
         <>
             <Header 
-                goTo="fromDetails" 
-                pageTitle="Movie Details" 
+                pageTitle="My Watchlist" 
+                link={
+                    <div className="details-header-links">
+                        <HeaderLinkSearch />
+                        <HeaderLinkWatchlist />
+                    </div>
+                } 
             />
             <div>Details</div>
             <div>{movieId}</div>
+            <div></div>
         </>
     )
 }

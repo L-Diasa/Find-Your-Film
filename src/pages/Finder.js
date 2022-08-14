@@ -1,20 +1,18 @@
 import React, { useState, useContext, useRef, useMemo, useEffect } from "react"
 import { Routes, Route, Link, useNavigate } from "react-router-dom"
 
-import { Header, HeaderLinkWatchlist } from '../components/Header'
-import Genre from '../components/Genre'
+import Header from '../components/Header'
+import GenreCarousel from '../components/GenreCarousel'
+import MovieCarousel from '../components/MovieCarousel'
 import Category from '../components/Category'
+import StartExploring from '../components/StartExploring'
 import { Context } from "../Context"
-
-import noDataIcon_light from "../images/noDataIcon_light.svg"
-import noDataIcon_dark from "../images/noDataIcon_dark.svg"
 import searchIcon from "../images/searchIcon.svg"
 
 function Finder() {
     const [currSelection, setCurrSelection] = useState("")
     const [query, setQuery] = useState("")
-    const { genres, 
-            genreSelection, 
+    const { genreSelection, 
             clearGenreSelection,
             darkMode 
         } = useContext(Context)
@@ -30,37 +28,14 @@ function Finder() {
     }, [query])
 
     useEffect(() => {
-        console.log("here")
         clearGenreSelection()
         setCurrSelection("")
     }, [])
-
-    const genreLinks = genres.map( genre => 
-        <Genre 
-            key={genre.id}
-            name={genre.name}
-            id={genre.id}
-            currSelected={
-                currSelection === "genre"
-            }
-            handleNavigation={() => {
-                navigate("/Finder/genre")
-                setCurrSelection("genre")
-                setQuery("")
-            }
-            }
-        />
-    )
 
     function handleSearch(e) {
         e.preventDefault()
         searchInputRef.current.focus()
         navigate("/Finder/search")
-        clearGenreSelection()
-    }
-
-    function handleTypeClick() {
-        setQuery("")
         clearGenreSelection()
     }
 
@@ -71,10 +46,8 @@ function Finder() {
     return useMemo(() => {
         return (
             <div className={`page ${darkMode}`}>
-                <Header 
-                    pageTitle="Find Your Film" 
-                    link={<HeaderLinkWatchlist />} 
-                />
+                <Header />
+                
                 <main>
                     <form onSubmit={(e) => handleSearch(e)}>
                         <img 
@@ -107,70 +80,49 @@ function Finder() {
                             Search
                         </Link>
                     </form>
-                    <div className="finder-category-links types">
-                        <Link 
-                            to={`/Finder/popular`} 
-                            onClick={() => {
-                                setCurrSelection("popular")
-                                handleTypeClick()
-                                }
-                            }
-                            className={`
-                                finder-link 
-                                ${darkMode}
-                                ${getLinkClass(currSelection === "popular")}
-                            `}
-                        >
-                            Popular
-                        </Link>
-                        <Link 
-                            to={`/Finder/upcoming`} 
-                            onClick={() => {
-                                setCurrSelection("upcoming")
-                                handleTypeClick()
-                                }
-                            }
-                            className={`
-                                finder-link 
-                                ${darkMode}
-                                ${getLinkClass(currSelection === "upcoming")}
-                            `}
-                        >
-                            Upcoming
-                        </Link>
-                    </div>
-                    <div className="finder-category-links">
-                        {genreLinks}
-                    </div>
+
+                    <GenreCarousel 
+                        currSelected={
+                            currSelection === "genre"
+                        }
+                        handleNavigation={() => {
+                            navigate("/Finder/genre")
+                            setCurrSelection("genre")
+                            setQuery("")
+                        }}
+                    />
+                    
                     <Routes>
                         <Route 
                             path="/" 
                             element={
-                                <div className={`smthsUp ${darkMode}`}>
-                                    <img 
-                                        src={darkMode ? 
-                                            noDataIcon_dark :
-                                            noDataIcon_light}
-                                        alt=""
-                                        className="no-data-icon"
-                                    />
-                                    Start exploring
-                                </div> 
+                                <>
+                                    <MovieCarousel type="popular" />
+                                    <MovieCarousel type="upcoming" />
+                                </>
                             }
                         />
-                        <Route  path=":type" 
-                                element={<Category/>}/>
                         <Route  exact 
                                 path="search" 
-                                element={<Category query={query} />} /> 
+                                element={
+                                    query ? 
+                                    <Category query={query}/>
+                                    :
+                                    <StartExploring />
+                                } /> 
                         <Route  exact
                                 path="genre" 
-                                element={<Category genre={genreSelection.join(',')}/>}/>    
+                                element={
+                                    genreSelection.length ? 
+                                    <Category genre={genreSelection.join(',')} />
+                                    :
+                                    <StartExploring />
+                                }/>    
                     </Routes>
                 </main>
             </div>
         )
-    }, [currSelection, query, genreSelection, darkMode])
+    }, [currSelection, query, genreSelection, darkMode ])
 }
 
 export default Finder

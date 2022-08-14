@@ -5,12 +5,15 @@ import {Header, HeaderLinkSearch } from '../components/Header'
 import Movie from '../components/Movie'
 import { Context } from "../Context"
 
-import ascendingIcon from "../images/ascendingIcon.svg"
-import descendingIcon from "../images/descendingIcon.svg"
-import addIcon from "../images/addIcon.svg"
+import ascendingIcon_light from "../images/ascendingIcon_light.svg"
+import ascendingIcon_dark from "../images/ascendingIcon_dark.svg"
+import descendingIcon_light from "../images/descendingIcon_light.svg"
+import descendingIcon_dark from "../images/descendingIcon_dark.svg"
+import addIcon_light from "../images/addIcon_light.svg"
+import addIcon_dark from "../images/addIcon_dark.svg"
 
 export default function Watchlist() {
-    const { watchlistItems, lastRemovedId } = useContext(Context)
+    const { watchlistItems, lastRemovedId, darkMode } = useContext(Context)
 
     const [sotredArray, setSortedArray] = useState([])
     const [currSortOrder, setCurrSortOrder] = useState("asc")
@@ -37,26 +40,35 @@ export default function Watchlist() {
     }
 
     return (
-        <>
+        <div className={`page ${darkMode}`}>
             <Header pageTitle="My Watchlist" link={<HeaderLinkSearch />} />
             <main>            
                 {sotredArray.length ?
                     <>
-                    <div className="watchlist-sorter selected-finder-link" onClick={toggleDate}>
-                        Date Added<img src={currSortOrder === "asc" ? ascendingIcon : descendingIcon} alt="" />
+                    <div className={`watchlist-sorter selected-finder-link ${darkMode}`} onClick={toggleDate}>
+                        Date Added
+                        <img src={
+                            currSortOrder === "asc" ? 
+                            darkMode ? ascendingIcon_dark : ascendingIcon_light
+                            : 
+                            darkMode ? descendingIcon_dark : descendingIcon_light 
+                            } alt="" 
+                        />
                     </div>
                     {sotredArray}
                     </>
                     :
-                    <div className="smthsUp">
+                    <div className={`smthsUp ${darkMode}`}>
                         Your watchlist is looking a little empty...
                         <Link className="lets-add" to="/finder">
-                            <img src={addIcon} alt="" />
+                            <img src={darkMode ? 
+                                    addIcon_light :
+                                    addIcon_dark} alt="" />
                             Let’s add some movies!
                         </Link>
                     </div>
                 }
             </main>
-        </>
+        </div>
     )
 }

@@ -11,7 +11,7 @@ function Header({ pageTitle, link }) {
                 <h1 className="header-title">{pageTitle}</h1>
                 <div>
                     <div 
-                        className={`toggler ${darkMode ? "dark" : ""}`}
+                        className={`toggler ${darkMode}`}
                     >
                         <p>Light</p>
                         <div 

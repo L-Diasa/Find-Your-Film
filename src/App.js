@@ -7,12 +7,12 @@ import Watchlist from "./pages/Watchlist"
 
 export default function App() {
   return (
-    <div>
+    <>
       <Routes>
         <Route exact path="/" element={<Watchlist />}/>
         <Route exact path="/Details" element={<Details/>}/>
         <Route path="/Finder/*" element={<Finder />}/>
       </Routes>
-    </div>
+    </>
   )
 }

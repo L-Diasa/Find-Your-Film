@@ -2,13 +2,15 @@ import React, { useMemo, useContext } from "react"
 import { Link } from "react-router-dom"
 import { Context } from "../Context"
 
-function Header({ pageTitle, link }) {
-    const { darkMode, toggleDarkMode } = useContext(Context)
+export default function Header() {
+    const { darkMode, toggleDarkMode, watchlistItems } = useContext(Context)
 
     return useMemo(() => {
         return (
             <header>
-                <h1 className="header-title">{pageTitle}</h1>
+                <Link to="/Finder" className="header-link">
+                    <h1 className="header-title">Find Your Film</h1>
+                </Link>
                 <div>
                     <div 
                         className={`toggler ${darkMode}`}
@@ -22,23 +24,21 @@ function Header({ pageTitle, link }) {
                         </div>
                         <p>Dark</p>
                     </div>
-                    {link}
+                    <Link 
+                        to="/" 
+                        className="header-link watchlist" 
+                    >
+                        My Watchlist 
+                        {   watchlistItems.length ? 
+                            <span className="header-link-watchlist-num">
+                                {watchlistItems.length}
+                            </span> 
+                            : 
+                            ""
+                        }
+                    </Link>
                 </div>
             </header>
         )
-    }, [darkMode])
+    }, [darkMode, watchlistItems])
 }
-
-function HeaderLinkSearch() {
-    return (
-        <Link to="/Finder" className="header-link">Search for Movies</Link>
-    )
-}
-
-function HeaderLinkWatchlist(props) {
-    return (
-        <Link to="/" className="header-link" onClick={props.handleClick}>My Watchlist</Link>
-    )
-}
-
-export { Header, HeaderLinkWatchlist, HeaderLinkSearch }

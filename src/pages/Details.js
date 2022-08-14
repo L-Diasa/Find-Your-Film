@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { useLocation } from 'react-router-dom'
 
-import { Header, HeaderLinkSearch, HeaderLinkWatchlist } from '../components/Header'
+import Header from '../components/Header'
 import { Context } from "../Context"
 
 export default function Details() {
@@ -11,15 +11,7 @@ export default function Details() {
 
     return (
         <div className={`page ${darkMode}`}>
-            <Header 
-                pageTitle="My Watchlist" 
-                link={
-                    <div className="details-header-links">
-                        <HeaderLinkSearch />
-                        <HeaderLinkWatchlist />
-                    </div>
-                } 
-            />
+            <Header />
             <div>Details</div>
             <div>{movieId}</div>
             <div></div>

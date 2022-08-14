@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useMemo } from "react"
 import { Context } from "../Context"
 
-export default function Genre({ id, name, currSelected, handleNavigation}) {
+export default function Genre({ id, name, currSelected, handleNavigation }) {
     const [isSelectedGenre, setIsSelectedGenre] = useState(false)
     const { 
         isInGenreSelection, 
@@ -37,5 +37,5 @@ export default function Genre({ id, name, currSelected, handleNavigation}) {
             </button>
 
         )
-    }, [isSelectedGenre, currSelected, darkMode])
+    }, [isSelectedGenre, currSelected, darkMode ])
 }

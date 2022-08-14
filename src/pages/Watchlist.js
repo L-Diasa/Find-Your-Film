@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect }from "react"
 import { Link } from "react-router-dom"
 
-import {Header, HeaderLinkSearch } from '../components/Header'
+import Header  from '../components/Header'
 import Movie from '../components/Movie'
 import { Context } from "../Context"
 
@@ -41,7 +41,7 @@ export default function Watchlist() {
 
     return (
         <div className={`page ${darkMode}`}>
-            <Header pageTitle="My Watchlist" link={<HeaderLinkSearch />} />
+            <Header />
             <main>            
                 {sotredArray.length ?
                     <>

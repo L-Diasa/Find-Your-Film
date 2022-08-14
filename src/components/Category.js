@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
-import { useParams } from "react-router-dom"
 import Movie from "./Movie"
 
 function Category(props) {
-    let { type } = useParams()
     const [movieList, setMovieList] = useState([])
     const [hasMorePages, setHasMorePages] = useState(true)
     const [pages, setPages] = useState(1)
-
     const [unableToFind, setUnableToFind] = useState(false)
 
     useEffect(() => {
@@ -20,13 +17,10 @@ function Category(props) {
         setUnableToFind(false)
         setPages(1)
         getMovies()
-    }, [type, props])
+    }, [props])
 
     function createUrl() {
         let key = "a662712626815555702f1c6320550397"
-        if(type) {
-            return `https://api.themoviedb.org/3/movie/${type}?api_key=${key}&language=en-US&page=${pages}`
-        }
         if(props.query) {
             return `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&page=${pages}&query=${props.query}`
         } 

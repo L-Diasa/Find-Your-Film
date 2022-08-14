@@ -6,7 +6,8 @@ export default function Genre({ id, name, currSelected, handleNavigation}) {
     const { 
         isInGenreSelection, 
         addToGenreSelection, 
-        removeFromGenreSelection
+        removeFromGenreSelection,
+        darkMode
         } = useContext(Context)
 
     useEffect(() => {
@@ -14,27 +15,27 @@ export default function Genre({ id, name, currSelected, handleNavigation}) {
     }, [currSelected])
 
     function handleClick() {
-        if(isSelectedGenre) {
+        handleNavigation()
+        if(isInGenreSelection(id)) {
             removeFromGenreSelection(id)
             setIsSelectedGenre(false)
         } else {
             addToGenreSelection(id)
             setIsSelectedGenre(true)
         }
-        handleNavigation()
     }
 
     return useMemo(() => {
         return (
             <button 
                 onClick={handleClick}
-                className={`finder-link 
-                    ${(currSelected && isSelectedGenre) ? 
+                className={`finder-link ${darkMode}
+                    ${(currSelected && isInGenreSelection(id)) ? 
                         "selected-finder-link" : ""}`}
             >
                 {name}
             </button>
 
         )
-    }, [isSelectedGenre, currSelected])
+    }, [isSelectedGenre, currSelected, darkMode])
 }

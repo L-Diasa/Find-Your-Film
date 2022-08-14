@@ -6,7 +6,8 @@ import Genre from '../components/Genre'
 import Category from '../components/Category'
 import { Context } from "../Context"
 
-import noDataIcon from "../images/noDataIcon.svg"
+import noDataIcon_light from "../images/noDataIcon_light.svg"
+import noDataIcon_dark from "../images/noDataIcon_dark.svg"
 import searchIcon from "../images/searchIcon.svg"
 
 function Finder() {
@@ -14,7 +15,8 @@ function Finder() {
     const [query, setQuery] = useState("")
     const { genres, 
             genreSelection, 
-            clearGenreSelection 
+            clearGenreSelection,
+            darkMode 
         } = useContext(Context)
     const searchInputRef = useRef(null)
     let navigate = useNavigate()
@@ -28,7 +30,9 @@ function Finder() {
     }, [query])
 
     useEffect(() => {
+        console.log("here")
         clearGenreSelection()
+        setCurrSelection("")
     }, [])
 
     const genreLinks = genres.map( genre => 
@@ -66,9 +70,9 @@ function Finder() {
 
     return useMemo(() => {
         return (
-            <>
+            <div className={`page ${darkMode}`}>
                 <Header 
-                    pageTitle="My Watchlist" 
+                    pageTitle="Find Your Film" 
                     link={<HeaderLinkWatchlist />} 
                 />
                 <main>
@@ -84,7 +88,7 @@ function Finder() {
                             placeholder="Search for a movie"
                             value={query} 
                             onChange={(e) => setQuery(e.target.value)}
-                            className="search-input"
+                            className={`search-input ${darkMode}`}
                         /> 
                         <Link 
                             to={`/Finder/search`}
@@ -96,6 +100,7 @@ function Finder() {
                             className={`
                                 search-link 
                                 finder-link 
+                                ${darkMode}
                                 ${getLinkClass(currSelection === "search")}
                             `}
                         >
@@ -112,6 +117,7 @@ function Finder() {
                             }
                             className={`
                                 finder-link 
+                                ${darkMode}
                                 ${getLinkClass(currSelection === "popular")}
                             `}
                         >
@@ -126,6 +132,7 @@ function Finder() {
                             }
                             className={`
                                 finder-link 
+                                ${darkMode}
                                 ${getLinkClass(currSelection === "upcoming")}
                             `}
                         >
@@ -139,9 +146,11 @@ function Finder() {
                         <Route 
                             path="/" 
                             element={
-                                <div className="smthsUp">
+                                <div className={`smthsUp ${darkMode}`}>
                                     <img 
-                                        src={noDataIcon} 
+                                        src={darkMode ? 
+                                            noDataIcon_dark :
+                                            noDataIcon_light}
                                         alt=""
                                         className="no-data-icon"
                                     />
@@ -159,9 +168,9 @@ function Finder() {
                                 element={<Category genre={genreSelection.join(',')}/>}/>    
                     </Routes>
                 </main>
-            </>
+            </div>
         )
-    }, [currSelection, query, genreSelection])
+    }, [currSelection, query, genreSelection, darkMode])
 }
 
 export default Finder

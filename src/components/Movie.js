@@ -3,9 +3,12 @@ import { Link } from "react-router-dom"
 import { Context } from "../Context"
 
 import starIcon from "../images/starIcon.svg"
-import addIcon from "../images/addIcon.svg"
-import removeIcon from "../images/removeIcon.svg"
-import viewDetailsIcon from "../images/viewDetailsIcon.svg"
+import addIcon_light from "../images/addIcon_light.svg"
+import addIcon_dark from "../images/addIcon_dark.svg"
+import removeIcon_light from "../images/removeIcon_light.svg"
+import removeIcon_dark from "../images/removeIcon_dark.svg"
+import viewDetailsIcon_light from "../images/viewDetailsIcon_light.svg"
+import viewDetailsIcon_dark from "../images/viewDetailsIcon_dark.svg"
 
 export default function Movie({ id }) {
     const [movieDetails, setMovieDetails] = useState(null)
@@ -13,7 +16,8 @@ export default function Movie({ id }) {
     const { 
         isInWatchlistChecker, 
         addToWatchlist, 
-        removeFromWatchlist
+        removeFromWatchlist,
+        darkMode
         } = useContext(Context)
 
     const url = `https://api.themoviedb.org/3/movie/${id}?api_key=a662712626815555702f1c6320550397&language=en-US`
@@ -36,7 +40,9 @@ export default function Movie({ id }) {
                     className="movie-watchlist-content"
                     >
                     <img 
-                        src={removeIcon} 
+                        src={darkMode ? 
+                            removeIcon_light :
+                            removeIcon_dark} 
                         alt="remove" 
                     />Watchlist
                 </div>
@@ -50,7 +56,9 @@ export default function Movie({ id }) {
                 className="movie-watchlist-content"
                 >
                     <img 
-                        src={addIcon} 
+                        src={darkMode ? 
+                            addIcon_light :
+                            addIcon_dark}
                         alt="add" 
                     />Watchlist
                 </div>
@@ -60,7 +68,7 @@ export default function Movie({ id }) {
         return (
             <>
             { movieDetails && 
-            <div className="movie">
+            <div className={`movie ${darkMode}`}>
                 <img 
                     className="movie-image" 
                     alt=""
@@ -81,12 +89,14 @@ export default function Movie({ id }) {
                     state={{ movieId: id }}
                     className="movie-more"
                 >
-                    <img src={viewDetailsIcon} alt="" />
+                    <img src={darkMode ? 
+                            viewDetailsIcon_light :
+                            viewDetailsIcon_dark} alt="" />
                     More
                 </Link>
             </div>
         }
         </>
         )
-    }, [isInWatchlist, movieDetails])
+    }, [isInWatchlist, movieDetails, darkMode])
 }

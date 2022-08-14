@@ -31,7 +31,6 @@ function Category(props) {
             return `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&page=${pages}&query=${props.query}`
         } 
         if(props.genre) {
-            console.log(props.genre)
             return `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&page=${pages}&with_genres=${props.genre}`
         }
         return ""

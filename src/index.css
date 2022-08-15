@@ -8,6 +8,7 @@ body {
 
 .page {
   min-height: 100vh;
+  position: relative;
 }
 
 /* header */
@@ -461,7 +462,7 @@ header img {
   background-color: #2B283A;
 }
 
-/* carousel */
+/* carousel & scrollToTop */
 
 .carousel-movie-title {
   font-size: 21px;
@@ -475,17 +476,19 @@ header img {
   width: 100%;
 }
 
-.carousel.dark .rec-carousel-wrapper .rec-carousel .rec-arrow {
+.carousel.dark .rec-carousel-wrapper .rec-carousel .rec-arrow,
+.scrollToTop.dark {
   background-color: white;
 }
 .carousel.dark .rec-carousel-wrapper .rec-carousel .rec-arrow:focus,
-.carousel.dark .rec-carousel-wrapper .rec-carousel .rec-arrow:hover
- {
+.carousel.dark .rec-carousel-wrapper .rec-carousel .rec-arrow:hover,
+.scrollToTop:hover
+{
   background-color: rgb(103 58 183)
 }
 
-.carousel.dark .rec-carousel-wrapper .rec-carousel .rec-arrow:focus {
-  background-color: rgb(103 58 183)
+.scrollToTop:hover {
+  color: white;
 }
 
 .carousel.dark .rec-carousel-wrapper .rec-carousel .rec-arrow:disabled,
@@ -498,3 +501,29 @@ header img {
   background: rgb(196, 189, 189);
 }
 
+/* crollToTop */
+
+.scrollToTop {
+  position: fixed;
+  bottom: 4rem;
+  right: 4rem;
+  z-index: 8;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  color: white;
+  line-height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 2px 0px #333;
+  font-size: 1.6em;
+  transform: rotate(270deg);
+  color: #333;
+  cursor: pointer;
+  background-color: rgba(103,58,183,0.1);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.scrollToTop.hidden {
+  z-index: -1;
+}

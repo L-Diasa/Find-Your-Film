@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 
 import Header  from '../components/Header'
 import Movie from '../components/Movie'
+import ScrollToTop from '../components/ScrollToTop'
 import { Context } from "../Context"
 
 import ascendingIcon_light from "../images/ascendingIcon_light.svg"
@@ -56,6 +57,7 @@ export default function Watchlist() {
                         />
                     </div>
                     {sotredArray}
+                    <ScrollToTop />
                     </>
                     :
                     <div className={`smthsUp ${darkMode}`}>

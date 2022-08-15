@@ -6,6 +6,7 @@ import GenreCarousel from '../components/GenreCarousel'
 import MovieCarousel from '../components/MovieCarousel'
 import Category from '../components/Category'
 import StartExploring from '../components/StartExploring'
+import ScrollToTop from '../components/ScrollToTop'
 import { Context } from "../Context"
 import searchIcon from "../images/searchIcon.svg"
 
@@ -80,6 +81,8 @@ function Finder() {
                             Search
                         </Link>
                     </form>
+                        
+                    <ScrollToTop />
 
                     <GenreCarousel 
                         currSelected={

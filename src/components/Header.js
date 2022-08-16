@@ -2,13 +2,17 @@ import React, { useMemo, useContext } from "react"
 import { Link } from "react-router-dom"
 import { Context } from "../Context"
 
-export default function Header() {
+export default function Header( { handleClick } ) {
     const { darkMode, toggleDarkMode, watchlistItems } = useContext(Context)
 
     return useMemo(() => {
         return (
             <header>
-                <Link to="/Finder" className="header-link">
+                <Link 
+                    to="/Finder" 
+                    className="header-link"
+                    onClick={() => handleClick()}
+                >
                     <h1 className="header-title">Find Your Film</h1>
                 </Link>
                 <div>

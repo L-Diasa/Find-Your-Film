@@ -28,6 +28,8 @@ header {
 
 .header-link.watchlist {
   position: relative;
+  text-align: left;;
+  /* text-align: left; */
 }
 
 .header-link-watchlist-num {
@@ -39,7 +41,7 @@ header {
   height: 22px;
   position: absolute;
   top: -8px;
-  right: -18px;
+  right: -12px;
   border-radius: 50%;
 }
 
@@ -78,6 +80,10 @@ main {
   column-gap: 20px;
   row-gap: 3px;
   align-items: center;
+}
+
+.movie:last-child {
+  border-bottom: none;
 }
 
 .movie-image { 
@@ -228,7 +234,7 @@ header img {
 
 .header-link {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   color: unset;
 } 
 
@@ -238,13 +244,6 @@ header img {
 .smthsUp .lets-add {
   text-decoration: none;
 }
-
-/* .movie-more:hover,
-.header-link:hover,
-.smthsUp .lets-add:hover,
-.movie-watchlist-content:hover {
-  text-decoration: underline;
-} */
 
 /* pointer */
 

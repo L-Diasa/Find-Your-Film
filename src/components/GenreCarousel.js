@@ -16,7 +16,7 @@ export default function GenreCarousel({ currSelected, handleNavigation }) {
         { width: 1400, itemsToShow: 7 }
     ]
 
-    const genreLinks = genres.map( genre => 
+    const genreLinks = genres ? genres.map( genre => 
         <Genre 
             key={genre.id}
             name={genre.name}
@@ -24,12 +24,14 @@ export default function GenreCarousel({ currSelected, handleNavigation }) {
             currSelected={currSelected}
             handleNavigation={handleNavigation}
         />)
+        : null
 
     return (
         <div className={`carousel ${darkMode}`}>
+            {genreLinks &&
             <Carousel breakPoints={breakPoints}>
                 {genreLinks}
-            </Carousel>
+            </Carousel>}
         </div>
     )
 }

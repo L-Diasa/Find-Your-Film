@@ -6,7 +6,11 @@ const PORT = process.env.PORT || 3001
 
 const app = express()
 
-app.use(cors())
+app.use(express.static(path.resolve(__dirname, '../client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
 
 app.get("/genrelist", (req, res) => {
   const options = {

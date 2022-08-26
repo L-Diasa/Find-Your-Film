@@ -33,8 +33,8 @@ function Category(props) {
             const options = {
                 method: 'GET',
                 url: props.query ? 
-                    'http://localhost:3001/searchwithquery' :
-                    'http://localhost:3001/searchwithgenre',
+                    `http://localhost:${process.env.PORT}/searchwithquery` :
+                    `http://localhost:${process.env.PORT}/searchwithgenre`,
                 params: {movieid: props.id}
             }
             axios.request(options)

@@ -17,14 +17,12 @@ app.get("/genrelist", (req, res) => {
 
   axios.request(options).then((response) => {
       res.json(response.data)
-      console.log("AAAAAA")
   }).catch((error) => {
       console.error(error, "error")
   })
 })
 
 app.get("/moviebyid", (req, res) => {
-  console.log("gnerelisterr")
   const id = req.query.movieid
   const options = {
       method: 'GET',
@@ -32,8 +30,9 @@ app.get("/moviebyid", (req, res) => {
   }
 
   axios.request(options).then((response) => {
-    console.log("AAAAAA")
       res.json(response.data)
+  }).catch((error) => {
+    console.error(error, "error")
   })
 })
 
@@ -45,8 +44,9 @@ app.get("/movieCarousel", (req, res) => {
   }
 
   axios.request(options).then((response) => {
-    console.log("AAAAAA")
       res.json(response.data)
+  }).catch((error) => {
+    console.error(error, "error")
   })
 })
 
@@ -60,6 +60,8 @@ app.get("/searchwithquery", (req, res) => {
 
   axios.request(options).then((response) => {
       res.json(response.data)
+  }).catch((error) => {
+    console.error(error, "error")
   })
 })
 
@@ -73,20 +75,14 @@ app.get("/searchwithgenre", (req, res) => {
 
   axios.request(options).then((response) => {
       res.json(response.data)
+  }).catch((error) => {
+    console.error(error, "error")
   })
 })
 
-
-app.get('/api', (req, res) => {
-    res.json({message: "yoo"})
-  });
-
-
 app.get('*', (req, res) => {
-  console.log("aaaaaaa")
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`)

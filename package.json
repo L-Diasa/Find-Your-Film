@@ -28,7 +28,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node server/index.js",
+    "start": "react-scripts start",
     "build": "cd client && npm install && npm run build",
     "start:backend": "node server/index.js",
     "test": "react-scripts test",

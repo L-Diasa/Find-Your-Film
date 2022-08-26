@@ -10,7 +10,7 @@ function ContextProvider({children}) {
     const [darkMode, setDarkMode] = useState("dark")
 
     useEffect(() => {
-        const url = `http://localhost:${process.env.PORT}/genrelist`
+        const url = `/genrelist`
         fetch(url)
         .then(res => res.json())
         .then(data => setgenres(data.genres))

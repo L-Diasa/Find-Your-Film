@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/watchlist/static/css/main.20688bb6.css",
+    "main.js": "/watchlist/static/js/main.1320f63e.js",
+    "static/media/headerBackground.png": "/watchlist/static/media/headerBackground.c710ad1c3c25ebaabd51.png",
+    "index.html": "/watchlist/index.html",
+    "static/media/starIcon.svg": "/watchlist/static/media/starIcon.6fe60ae7ff8a2e5bc9050d34acfee91a.svg",
+    "static/media/noDataIcon_dark.svg": "/watchlist/static/media/noDataIcon_dark.d965cba7c5c96f5257af02ec80968688.svg",
+    "static/media/noDataIcon_light.svg": "/watchlist/static/media/noDataIcon_light.2e9f455dc05f41d1011c2b6e1f57527f.svg",
+    "static/media/searchIcon.svg": "/watchlist/static/media/searchIcon.6ab606b8a37ded38727546e23347adaa.svg",
+    "static/media/addIcon_dark.svg": "/watchlist/static/media/addIcon_dark.833ee5a8794699f629efcbde639269de.svg",
+    "static/media/addIcon_light.svg": "/watchlist/static/media/addIcon_light.7c11c7bfaf3eb42be5e13dfe6f9e4033.svg",
+    "static/media/viewDetailsIcon_dark.svg": "/watchlist/static/media/viewDetailsIcon_dark.7032ba62f543bc73c66a5480f8eaec7d.svg",
+    "static/media/viewDetailsIcon_light.svg": "/watchlist/static/media/viewDetailsIcon_light.b392dbb6c0e69e341e70641dc5c20d1a.svg",
+    "static/media/removeIcon_dark.svg": "/watchlist/static/media/removeIcon_dark.5b12421a62ed260cc90b90e75525709f.svg",
+    "static/media/removeIcon_light.svg": "/watchlist/static/media/removeIcon_light.bb5d53b1cd733574f0a651ad6e5ea314.svg",
+    "static/media/descendingIcon_dark.svg": "/watchlist/static/media/descendingIcon_dark.81dfebeece22572b5c6a486a52fd6cae.svg",
+    "static/media/ascendingIcon_dark.svg": "/watchlist/static/media/ascendingIcon_dark.9548319592b9f96daff7ab9ac8de0764.svg",
+    "static/media/descendingIcon_light.svg": "/watchlist/static/media/descendingIcon_light.768807ab4dd1bf213f4f7c7f0eac563d.svg",
+    "static/media/ascendingIcon_light.svg": "/watchlist/static/media/ascendingIcon_light.fe092550fb2e02aac1935e009e131148.svg",
+    "main.20688bb6.css.map": "/watchlist/static/css/main.20688bb6.css.map",
+    "main.1320f63e.js.map": "/watchlist/static/js/main.1320f63e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.20688bb6.css",
+    "static/js/main.1320f63e.js"
+  ]
+}

@@ -24,7 +24,7 @@ export default function Movie({ id }) {
     useEffect(() => {
         const options = {
             method: 'GET',
-            url: 'http://localhost:3001/moviebyid',
+            url: `http://localhost:${process.env.PORT}/moviebyid`,
             params: {movieid: id}
         }
         axios.request(options)

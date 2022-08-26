@@ -1,8 +1,8 @@
-const PORT = process.env.PORT || 3001
 const express = require('express')
 const cors = require('cors')
 const axios = require('axios')
 require('dotenv').config()
+const PORT = process.env.PORT || 3001
 
 const app = express()
 

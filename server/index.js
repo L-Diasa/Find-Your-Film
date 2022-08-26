@@ -3,7 +3,7 @@ const path = require('path')
 const axios = require('axios')
 require('dotenv').config()
 
-const PORT = process.env.PORT || 3001
+const PORT = Number(process.env.PORT || 3001)
 
 const app = express()
 

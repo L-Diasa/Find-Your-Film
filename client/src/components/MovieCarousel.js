@@ -22,7 +22,7 @@ export default function MovieCarousel({ type }) {
     useEffect(() => {
         const options = {
             method: 'GET',
-            url: `http://localhost:${process.env.PORT}/movieCarousel`,
+            url: `/movieCarousel`,
             params: {carouselType: type}
         }
         axios.request(options)

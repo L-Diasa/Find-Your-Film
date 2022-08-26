@@ -5,6 +5,7 @@
     "node": "16.x",
     "npm": "8.1.2"
   },
+  "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

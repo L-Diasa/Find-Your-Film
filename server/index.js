@@ -17,13 +17,14 @@ app.get("/genrelist", (req, res) => {
 
   axios.request(options).then((response) => {
       res.json(response.data)
-
+      console.log("AAAAAA")
   }).catch((error) => {
       console.error(error, "error")
   })
 })
 
 app.get("/moviebyid", (req, res) => {
+  console.log("gnerelisterr")
   const id = req.query.movieid
   const options = {
       method: 'GET',
@@ -31,6 +32,7 @@ app.get("/moviebyid", (req, res) => {
   }
 
   axios.request(options).then((response) => {
+    console.log("AAAAAA")
       res.json(response.data)
   })
 })
@@ -43,6 +45,7 @@ app.get("/movieCarousel", (req, res) => {
   }
 
   axios.request(options).then((response) => {
+    console.log("AAAAAA")
       res.json(response.data)
   })
 })

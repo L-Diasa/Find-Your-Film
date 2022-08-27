@@ -11,7 +11,7 @@ export default function Header( { handleClick } ) {
                 <Link 
                     to="/Finder" 
                     className="header-link"
-                    onClick={() => handleClick()}
+                    onClick={handleClick}
                 >
                     <h1 className="header-title">Find Your Film</h1>
                 </Link>

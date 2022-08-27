@@ -35,7 +35,16 @@ function Category(props) {
                 url: props.query ? 
                     `/searchwithquery` :
                     `/searchwithgenre`,
-                params: {movieid: props.id}
+                params: props.query ? 
+                {
+                    pages: pages,
+                    query: props.query
+                } 
+                    :
+                { 
+                    pages: pages,
+                    genre: props.genre
+                }
             }
             axios.request(options)
             .then(res => res.data)

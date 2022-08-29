@@ -1,5 +1,5 @@
 import React from 'react'
-import {Routes, Route} from "react-router-dom"
+import {Routes, Route, Navigate} from "react-router-dom"
 
 import Details from "./pages/Details"
 import Finder from "./pages/Finder"
@@ -9,9 +9,10 @@ export default function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Watchlist />}/>
+        <Route exact path="/Watchlist" element={<Watchlist />}/>
         <Route exact path="/Details" element={<Details/>}/>
         <Route path="/Finder/*" element={<Finder />}/>
+        <Route path="/*" element={<Navigate to="/Finder" />}/>
       </Routes>
     </>
   )

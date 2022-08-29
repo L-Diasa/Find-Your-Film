@@ -29,7 +29,7 @@ export default function Header( { handleClick } ) {
                         <p>Dark</p>
                     </div>
                     <Link 
-                        to="/" 
+                        to="/Watchlist" 
                         className="header-link watchlist" 
                     >
                         My Watchlist 

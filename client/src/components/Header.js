@@ -2,7 +2,7 @@ import React, { useMemo, useContext } from "react"
 import { Link } from "react-router-dom"
 import { Context } from "../Context"
 
-export default function Header({ hancleClick }) {
+export default function Header( { handleClick } ) {
     const { darkMode, toggleDarkMode, watchlistItems } = useContext(Context)
 
     return useMemo(() => {
@@ -11,7 +11,7 @@ export default function Header({ hancleClick }) {
                 <Link 
                     to="/Finder" 
                     className="header-link"
-                    onClick={hancleClick}
+                    onClick={handleClick}
                 >
                     <h1 className="header-title">Find Your Film</h1>
                 </Link>
@@ -29,7 +29,7 @@ export default function Header({ hancleClick }) {
                         <p>Dark</p>
                     </div>
                     <Link 
-                        to="/" 
+                        to="/Watchlist" 
                         className="header-link watchlist" 
                     >
                         My Watchlist 

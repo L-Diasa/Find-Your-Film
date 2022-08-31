@@ -9,7 +9,7 @@ import { Context } from "../Context"
 import ascendingIcon_light from "../images/ascendingIcon_light.svg"
 import ascendingIcon_dark from "../images/ascendingIcon_dark.svg"
 import descendingIcon_light from "../images/descendingIcon_light.svg"
-import descendingIcon_dark from "../images/descendingIcon_dark.svg"
+import descendingIcon_dark from "../images/descendingIcon_dark.svg"  
 import addIcon_light from "../images/addIcon_light.svg"
 import addIcon_dark from "../images/addIcon_dark.svg"
 
@@ -46,18 +46,20 @@ export default function Watchlist() {
             <main>            
                 {sotredArray.length ?
                     <>
-                    <div className={`watchlist-sorter selected-finder-link ${darkMode}`} onClick={toggleDate}>
-                        Date Added
-                        <img src={
-                            currSortOrder === "asc" ? 
-                            darkMode ? ascendingIcon_dark : ascendingIcon_light
-                            : 
-                            darkMode ? descendingIcon_dark : descendingIcon_light 
-                            } alt="" 
-                        />
-                    </div>
-                    {sotredArray}
-                    <ScrollToTop />
+                        <div className={`watchlist-sorter selected-finder-link ${darkMode}`} onClick={toggleDate}>
+                            Date Added
+                            <img src={
+                                currSortOrder === "asc" ? 
+                                darkMode ? ascendingIcon_dark : ascendingIcon_light
+                                : 
+                                darkMode ? descendingIcon_dark : descendingIcon_light 
+                                } alt="" 
+                            />
+                        </div>
+                        <div>
+                            {sotredArray}
+                        </div>
+                        <ScrollToTop />
                     </>
                     :
                     <div className={`smthsUp ${darkMode}`}>

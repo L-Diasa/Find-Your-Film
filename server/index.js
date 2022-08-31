@@ -12,13 +12,13 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.get("/genrelist", (req, res) => {
   const options = {
       method: 'GET',
-      url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}`
+      url: `https://api.themovi/3/genre/movie/list?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}`
   }
 
   axios.request(options).then((response) => {
       res.json(response.data)
   }).catch((error) => {
-      console.error(error, "error")
+    return res.json(400)
   })
 })
 
@@ -26,13 +26,13 @@ app.get("/moviebyid", (req, res) => {
   const id = req.query.movieid
   const options = {
       method: 'GET',
-      url: `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}`
+      url: `https://api.themovi/3/movie/${id}?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}`
   }
 
   axios.request(options).then((response) => {
       res.json(response.data)
   }).catch((error) => {
-    console.error(error, "error")
+    res.json(400)
   })
 })
 
@@ -40,13 +40,13 @@ app.get("/movieCarousel", (req, res) => {
   const type = req.query.carouselType
   const options = {
       method: 'GET',
-      url: `https://api.themoviedb.org/3/movie/${type}?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&language=en-US&page=1`
+      url: `https://api.themovi/3/movie/${type}?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&language=en-US&page=1`
   }
 
   axios.request(options).then((response) => {
       res.json(response.data)
   }).catch((error) => {
-    console.error(error, "error")
+    res.json(400)
   })
 })
 
@@ -55,13 +55,13 @@ app.get("/searchwithquery", (req, res) => {
   const pages = req.query.pages
   const options = {
       method: 'GET',
-      url: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&language=en-US&page=${pages}&query=${query}`
+      url: `https://api.themovi/3/search/movie?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&language=en-US&page=${pages}&query=${query}`
   }
 
   axios.request(options).then((response) => {
       res.json(response.data)
   }).catch((error) => {
-    console.error(error, "error")
+    res.json(400)
   })
 })
 
@@ -70,13 +70,13 @@ app.get("/searchwithgenre", (req, res) => {
   const pages = req.query.pages
   const options = {
       method: 'GET',
-      url: `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&language=en-US&page=${pages}&with_genres=${genre}`
+      url: `https://api.themovi/3/discover/movie?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&language=en-US&page=${pages}&with_genres=${genre}`
   }
 
   axios.request(options).then((response) => {
       res.json(response.data)
   }).catch((error) => {
-    console.error(error, "error")
+    res.status(400)
   })
 })
 
@@ -84,6 +84,4 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`)
-})
+app.listen(PORT)

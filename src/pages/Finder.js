@@ -28,14 +28,14 @@ function Finder() {
         }
     }, [query])
 
+    useEffect(() => {
+        reset() 
+    }, [])
+
     function reset() {
         clearGenreSelection()
         setCurrSelection("")
     }
-
-    useEffect(() => {
-        reset()
-    }, [])
 
     function handleSearch(e) {
         e.preventDefault()
@@ -51,7 +51,7 @@ function Finder() {
     return useMemo(() => {
         return (
             <div className={`page ${darkMode}`}>
-                <Header handleClick={reset} />
+                <Header handleClick={reset}/>
                 
                 <main>
                     <form onSubmit={(e) => handleSearch(e)}>

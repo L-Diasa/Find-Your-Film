@@ -39,17 +39,18 @@ export default function MovieCarousel({ type }) {
 
     return (
         <>
+        {   movieList && 
+        <>
             <div className={`carousel-movie-title ${darkMode}`}>
                 {type.charAt(0).toUpperCase() + type.slice(1)}
             </div>
             <div className={`carousel ${darkMode}`}>
-                {   
-                    movieList && 
-                    <Carousel breakPoints={breakPoints}>
-                        {movieList}
-                    </Carousel>
-                }
+                <Carousel breakPoints={breakPoints}>
+                    {movieList}
+                </Carousel>
             </div>
+        </>
+        }
         </>
     )
 }

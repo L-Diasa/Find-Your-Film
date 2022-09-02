@@ -3,10 +3,26 @@ const path = require('path')
 const axios = require('axios')
 require('dotenv').config()
 
-const PORT = Number(process.env.PORT || 3001)
+const mongoose = require('mongoose')
+const typeDefs = require('./graphql/typeDefs')
+const resolvers = require('./graphql/resolvers')
+const { ApolloServer } = require('apollo-server')
 
+// apollo & mongoose set app
+const server = new ApolloServer({
+  typeDefs,
+  resolvers
+})
+
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true})
+  .then(() => {
+    server.listen(process.env.AUTH_PORT)
+  })
+  .catch(err => console.error(err))
+
+// app set up
+const APP_PORT = Number(process.env.PORT || 3001) 
 const app = express()
-
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 app.get("/genrelist", (req, res) => {
@@ -84,4 +100,4 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
-app.listen(PORT)
+app.listen(APP_PORT)

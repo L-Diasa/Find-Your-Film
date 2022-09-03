@@ -2,10 +2,10 @@ import React, { useContext } from "react"
 import { useLocation } from 'react-router-dom'
 
 import Header from '../components/Header'
-import { Context } from "../Context"
+import { AppContext } from "../context/AppContext"
 
 export default function Details() {
-    const { darkMode } = useContext(Context)
+    const { darkMode } = useContext(AppContext)
     const location = useLocation()
     const { movieId } = location.state
 

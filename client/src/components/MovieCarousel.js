@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react"
 import Carousel from "react-elastic-carousel"
 import CarouselMovie from "./CarouselMovie"
-import { Context } from "../Context"
+import { AppContext } from "../context/AppContext"
 import axios from 'axios'
 
 export default function MovieCarousel({ type }) {
     const [movieList, setMovieList] = useState(null)
-    const { darkMode } = useContext(Context)
+    const { darkMode } = useContext(AppContext)
     
     const breakPoints =[
         { width: 1, itemsToShow: 1 },

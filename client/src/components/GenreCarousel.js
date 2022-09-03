@@ -1,10 +1,10 @@
 import React, { useContext } from "react"
 import Carousel from "react-elastic-carousel"
-import { Context } from "../Context"
+import { AppContext } from "../context/AppContext"
 import Genre from "./Genre"
 
 export default function GenreCarousel({ currSelected, handleNavigation }) {
-    const { genres, darkMode } = useContext(Context)
+    const { genres, darkMode } = useContext(AppContext)
 
     const breakPoints = [
         { width: 1, itemsToShow: 1 },

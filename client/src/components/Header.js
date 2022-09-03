@@ -1,9 +1,9 @@
 import React, { useMemo, useContext } from "react"
 import { Link } from "react-router-dom"
-import { Context } from "../Context"
+import { AppContext } from "../context/AppContext"
 
 export default function Header( { handleClick } ) {
-    const { darkMode, toggleDarkMode, watchlistItems } = useContext(Context)
+    const { darkMode, toggleDarkMode, watchlistItems } = useContext(AppContext)
 
     return useMemo(() => {
         return (

@@ -7,7 +7,7 @@ import MovieCarousel from '../components/MovieCarousel'
 import Category from '../components/Category'
 import StartExploring from '../components/StartExploring'
 import ScrollToTop from '../components/ScrollToTop'
-import { Context } from "../Context"
+import { AppContext } from "../context/AppContext"
 import searchIcon from "../images/searchIcon.svg"
 
 function Finder() {
@@ -16,7 +16,7 @@ function Finder() {
     const { genreSelection, 
             clearGenreSelection,
             darkMode 
-        } = useContext(Context)
+        } = useContext(AppContext)
     const searchInputRef = useRef(null)
     let navigate = useNavigate()
 

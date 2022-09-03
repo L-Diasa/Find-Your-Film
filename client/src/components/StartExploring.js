@@ -1,12 +1,12 @@
 
 import React, { useContext } from "react"
-import { Context } from "../Context"
+import { AppContext } from "../context/AppContext"
 
 import noDataIcon_light from "../images/noDataIcon_light.svg"
 import noDataIcon_dark from "../images/noDataIcon_dark.svg"
 
 export default function StartExploring() {
-    const { darkMode } = useContext(Context)
+    const { darkMode } = useContext(AppContext)
 
     return(
         <div className={`smthsUp ${darkMode}`}>

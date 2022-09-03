@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useMemo } from "react"
 import { Link } from "react-router-dom"
-import { Context } from "../Context"
+import { AppContext } from "../context/AppContext"
 import axios from 'axios'
 
 import starIcon from "../images/starIcon.svg"
@@ -19,7 +19,7 @@ export default function Movie({ id }) {
         addToWatchlist, 
         removeFromWatchlist,
         darkMode
-        } = useContext(Context)
+        } = useContext(AppContext)
 
     useEffect(() => {
         const options = {

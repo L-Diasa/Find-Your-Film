@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import Header  from '../components/Header'
 import Movie from '../components/Movie'
 import ScrollToTop from '../components/ScrollToTop'
-import { Context } from "../Context"
+import { AppContext } from "../context/AppContext"
 
 import ascendingIcon_light from "../images/ascendingIcon_light.svg"
 import ascendingIcon_dark from "../images/ascendingIcon_dark.svg"
@@ -14,7 +14,7 @@ import addIcon_light from "../images/addIcon_light.svg"
 import addIcon_dark from "../images/addIcon_dark.svg"
 
 export default function Watchlist() {
-    const { watchlistItems, lastRemovedId, darkMode } = useContext(Context)
+    const { watchlistItems, lastRemovedId, darkMode } = useContext(AppContext)
 
     const [sotredArray, setSortedArray] = useState([])
     const [currSortOrder, setCurrSortOrder] = useState("asc")

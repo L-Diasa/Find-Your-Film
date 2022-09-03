@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
 
-const Context = React.createContext()
+const AppContext = React.createContext()
 
-function ContextProvider({children}) {
+function AppContextProvider({children}) {
     const [genres, setgenres] = useState(null)
     const [genreSelection, setGenreSelection] = useState([])
     const [watchlistItems, setWatchlisItems] = useState([])
@@ -55,7 +55,7 @@ function ContextProvider({children}) {
     }
     
     return (
-        <Context.Provider 
+        <AppContext.Provider 
             value={{
                 genres, 
                 genreSelection,
@@ -73,8 +73,8 @@ function ContextProvider({children}) {
             }}
         >
             {children}
-        </Context.Provider>
+        </AppContext.Provider>
     )
 }
 
-export {ContextProvider, Context}
+export {AppContextProvider, AppContext}

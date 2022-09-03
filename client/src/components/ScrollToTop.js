@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react"
-import { Context } from "../Context"
+import { AppContext } from "../context/AppContext"
 
 export default function ScrollToTop() {
     const [showButton, setShowBtn] = useState(false)
-    const { darkMode } = useContext(Context)
+    const { darkMode } = useContext(AppContext)
 
     function checkY() {
         if (window.scrollY > 500) {

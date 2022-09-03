@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useMemo } from "react"
-import { Context } from "../Context"
+import { AppContext } from "../context/AppContext"
 
 export default function Genre({ id, name, currSelected, handleNavigation }) {
     const [isSelectedGenre, setIsSelectedGenre] = useState(false)
@@ -8,7 +8,7 @@ export default function Genre({ id, name, currSelected, handleNavigation }) {
         addToGenreSelection, 
         removeFromGenreSelection,
         darkMode
-        } = useContext(Context)
+        } = useContext(AppContext)
 
     useEffect(() => {
         setIsSelectedGenre(isInGenreSelection(id))

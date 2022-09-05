@@ -55,8 +55,8 @@ module.exports = {
                     )
                     user.token = token
                     return {
-                        id: res.id,
-                        ...res._doc
+                        id: user.id,
+                        ...user._doc
                     }
                 } else {
                     throw new ApolloError('incorrect password', 'INCORRECT_PASSWORD')

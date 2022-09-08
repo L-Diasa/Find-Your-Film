@@ -43,7 +43,7 @@ module.exports = {
         async loginUser(__, { loginInput: { email, password } }) {
             const user = await User.findOne( { email: email.toLowerCase() } )
             if(user) {
-                if(await bcrypt.compare(password, user.model)){
+                if(await bcrypt.compare(password, user.password)){
                     const token = jwt.sign(
                         {
                             user_id: user._id, email

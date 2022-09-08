@@ -1,9 +1,14 @@
 import React, { useMemo, useContext } from "react"
 import { Link } from "react-router-dom"
 import { AppContext } from "../context/AppContext"
+import { AuthContext } from '../context/AuthContext'
 
 export default function Header( { handleClick } ) {
     const { darkMode, toggleDarkMode, watchlistItems } = useContext(AppContext)
+    const { logout } = useContext(AuthContext)
+    const onLogout = () => {
+        logout();
+    }
 
     return useMemo(() => {
         return (
@@ -16,6 +21,13 @@ export default function Header( { handleClick } ) {
                     <h1 className="header-title">Find Your Film</h1>
                 </Link>
                 <div>
+                    <Link 
+                        to="/Auth"
+                        onClick={onLogout}
+                        className="header-link log-out-button" 
+                    >
+                        Log out
+                    </Link>
                     <div 
                         className={`toggler ${darkMode}`}
                     >

@@ -3,13 +3,30 @@ const { ApolloError } = require('apollo-server-errors')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+const isValidEmail = email =>
+/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    email
+)
+
 module.exports = {
     Mutation: { 
         async registerUser(__, { registerInput: { email, password } }) {
+            if(!email || !isValidEmail(email)) {
+                throw new ApolloError(
+                    'Please enter a valid email address.'
+                )
+            }
+            
+            if(!(password.length >= 8)){
+                throw new ApolloError(
+                    'Your password must be at least 8 charaters.'
+                )
+            }
+
             const oldUser = await User.findOne( { email: email.toLowerCase() } )
             if(oldUser) {
                 throw new ApolloError(
-                    'User is already registered with the email ' + email, 
+                    'User is already registered with the email ' + email + '.', 
                     'USER'
                 )
             }
@@ -59,10 +76,10 @@ module.exports = {
                         ...user._doc
                     }
                 } else {
-                    throw new ApolloError('incorrect password', 'INCORRECT_PASSWORD')
+                    throw new ApolloError('Incorrect password.', 'INCORRECT_PASSWORD')
                 }
             } else {
-                throw new ApolloError('User does not exist')
+                throw new ApolloError('User does not exist.')
             }
         }
     },
